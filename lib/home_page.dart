@@ -3,48 +3,32 @@ import 'profile_page.dart';
 import 'events_page.dart';
 
 class HomePage extends StatelessWidget {
-  // Card data similar to your React component
   final List<Map<String, String>> cards = [
     {
-      'image':
-      'https://global.discourse-cdn.com/business6/uploads/codeorgforum/original/2X/5/5850a08813648555f34c29bea7b6d1de15f01655.gif',
+      'image': 'assets/images/webdev.gif',
       'title': 'Web Development',
-      'description':
-      'Focuses on empowering students to build responsive, user-friendly websites and web applications using modern web technologies and frameworks.',
-      'path': '/web-development',
+      'description': 'Focuses on empowering students to build responsive, user-friendly websites and web applications using modern web technologies and frameworks.',
     },
     {
-      'image':
-      'https://cdn.dribbble.com/users/330915/screenshots/3587000/10_coding_dribbble.gif',
+      'image': 'assets/images/cp.gif',
       'title': 'Competitive Programming',
-      'description':
-      'Cultivates competitive programming skills, encouraging students to hone their algorithmic problem-solving abilities, participate in coding competitions, and develop efficient solutions to real-world challenges.',
-      'path': '/competitive-programming',
+      'description': 'Cultivates competitive programming skills, encouraging students to hone their algorithmic problem-solving abilities, participate in coding competitions, and develop efficient solutions to real-world challenges.',
     },
     {
-      'image':
-      'https://connect.ignatiuz.com/hs-fs/hubfs/AI%20and%20Deep%20Learning.gif?width=1000&name=AI%20and%20Deep%20Learning.gif',
+      'image': 'assets/images/ml.webp',
       'title': 'Machine Learning',
-      'description':
-      'Immerses students in the intricacies of Machine Learning, motivating them to delve into and apply sophisticated algorithms, conduct data analysis, and create predictive models to address intricate problems.',
-      'path': '/machine-learning',
+      'description': 'Immerses students in the intricacies of Machine Learning, motivating them to delve into and apply sophisticated algorithms, conduct data analysis, and create predictive models to address intricate problems.',
     },
     {
-      'image':
-      'https://mir-s3-cdn-cf.behance.net/project_modules/hd/ea5d0476339699.5c6694d453222.gif',
+      'image': 'assets/images/management.gif',
       'title': 'Management',
-      'description':
-      'Provides students with leadership and organizational skills, fostering a community that not only excels in technical expertise but also effectively manages projects, events, and teams.',
-      'path': '/management',
+      'description': 'Provides students with leadership and organizational skills, fostering a community that not only excels in technical expertise but also effectively manages projects, events, and teams.',
     },
     {
-      'image':
-      'https://cdn.dribbble.com/users/3943049/screenshots/14032596/media/9e39cf22d33b4d2b77e9f270f2f06f6e.gif',
+      'image': 'assets/images/design.gif',
       'title': 'Design',
-      'description':
-      'Engages students in learning and applying best practices to secure digital systems, prevent cyber threats, and promote online safety.',
-      'path': '/design',
-    }
+      'description': 'Engages students in learning and applying best practices to secure digital systems, prevent cyber threats, and promote online safety.',
+    },
   ];
 
   @override
@@ -53,18 +37,17 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            Image.network(
-              'https://cdn-images-1.medium.com/max/578/1*vZVM7utCuRiZ6-HDsNeYUA@2x.png',
+            Image.asset(
+              'assets/images/gdgc_logo.png',
               fit: BoxFit.contain,
-              height: 40,
+              height: 30,
             ),
             SizedBox(width: 8),
             Text(
               'GDGC VNRVJIET',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 24,
-                color: Colors.white,
+                fontSize: 25,
               ),
             ),
           ],
@@ -75,7 +58,7 @@ class HomePage extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blue, Colors.blueAccent],
+              colors: [Colors.lightBlueAccent.shade100, Colors.white],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -84,21 +67,37 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                child: Text(
-                  'Menu',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.lightBlueAccent.shade100, Colors.white],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
                 ),
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/profile_photo.jpg'),
+                      radius: 30,
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'K Varun Venkata Sai',
+                      style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'varunketa2004@gmail.com',
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                  ],
                 ),
               ),
               ListTile(
+                leading: Icon(Icons.event, color: Colors.black87),
                 title: Text(
                   'Upcoming Events',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black87),
                 ),
                 onTap: () {
                   Navigator.push(
@@ -107,10 +106,12 @@ class HomePage extends StatelessWidget {
                   );
                 },
               ),
+              Divider(),
               ListTile(
+                leading: Icon(Icons.person, color: Colors.black87),
                 title: Text(
                   'Profile',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black87),
                 ),
                 onTap: () {
                   Navigator.push(
@@ -124,77 +125,94 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Text(
-              'What we do, at GDSC VNRVJIET:',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            SizedBox(height: 20),
-            ...cards.map((card) {
-              final index = cards.indexOf(card);
-              return Card(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Image.network(
-                        card['image']!,
-                        height: 120,
-                        fit: BoxFit.cover,
-                      ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Text(
+                    'What we do, at GDGC VNRVJIET?',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 20,
                     ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              card['title']!,
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: getTitleColor(index),
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              card['description']!,
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ],
+                  ),
+                  SizedBox(height: 20),
+                  Column(
+                    children: cards.map((card) {
+                      final index = cards.indexOf(card);
+                      return Card(
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        elevation: 4,
+                        shadowColor: Colors.grey.withOpacity(0.3),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                      ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center, // Center vertically
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(
+                                  card['image']!,
+                                  height: 120,
+                                  width: 120,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        card['title']!,
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold,
+                                          color: getTitleColor(index),
+                                        ),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        card['description']!,
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Join us, at GDSC.',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-              );
-            }).toList(),
-            SizedBox(height: 20),
-            Text(
-              'Join us, at GDSC.',
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Discover amazing events and connect with like-minded people.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                  SizedBox(height: 20),
+                ],
               ),
             ),
-            SizedBox(height: 10),
-            Text(
-              'Discover amazing events and connect with like-minded people.',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-            ),
-            SizedBox(height: 20),
           ],
         ),
       ),
@@ -206,7 +224,7 @@ class HomePage extends StatelessWidget {
       Color(0xFF0F71F2),
       Color(0xFF318C07),
       Color(0xFFF2A20C),
-      Color(0xFFD92929)
+      Color(0xFFD92929),
     ];
     return colors[index % colors.length];
   }
