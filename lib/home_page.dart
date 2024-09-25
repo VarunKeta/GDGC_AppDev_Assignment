@@ -132,7 +132,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'What we do, at GDGC VNRVJIET?',
+                    'What we do at GDGC?',
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 20,

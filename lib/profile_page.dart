@@ -43,7 +43,6 @@ class _ProfilePageState extends State<ProfilePage> {
             _buildProfileField('Country', _country),
             _buildProfileField('LinkedIn', _linkedin, isLink: true),
             SizedBox(height: 30),
-            _isEditing ? _buildEditProfileForm() : Container(),
           ],
         ),
       ),
@@ -77,80 +76,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _buildEditProfileForm() {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: <Widget>[
-          TextFormField(
-            initialValue: _name,
-            decoration: InputDecoration(labelText: 'Name'),
-            onSaved: (value) {
-              _name = value!;
-            },
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter your name';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            initialValue: _email,
-            decoration: InputDecoration(labelText: 'Email'),
-            onSaved: (value) {
-              _email = value!;
-            },
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter your email';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            initialValue: _city,
-            decoration: InputDecoration(labelText: 'City'),
-            onSaved: (value) {
-              _city = value!;
-            },
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter your city';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            initialValue: _country,
-            decoration: InputDecoration(labelText: 'Country'),
-            onSaved: (value) {
-              _country = value!;
-            },
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter your country';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            child: Text('Save Profile'),
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                setState(() {
-                  _isEditing = false;
-                });
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text('Profile Saved'),
-                ));
-              }
-            },
-          ),
-        ],
-      ),
-    );
+
   }
-}
+

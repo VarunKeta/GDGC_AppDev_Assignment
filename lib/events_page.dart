@@ -6,13 +6,13 @@ class EventsPage extends StatelessWidget {
       'name': 'Webathon3.O',
       'startDate': 'To be announced',
       'venue': 'VNRVJIET',
-      'description': 'Webathon 2024, an exciting marathon of web development, where creativity meets innovation! Whether you\'re a seasoned developer or a passionate beginner, this event is designed to challenge your skills, inspire new ideas, and foster collaboration.',
+      'description': 'Webathon 2024, an exciting marathon of web development...',
     },
     {
       'name': 'Tensor Flow',
       'startDate': 'To be announced',
       'venue': 'VNRVJIET',
-      'description': 'Join us for an in-depth TensorFlow Workshop, where we will dive into the world of machine learning and deep learning using one of the most powerful frameworks available. This event is perfect for both beginners and advanced practitioners who want to expand their knowledge and skills in TensorFlow.',
+      'description': 'Join us for an in-depth TensorFlow Workshop...',
     },
   ];
 
@@ -64,6 +64,24 @@ class EventsPage extends StatelessWidget {
                         fontSize: 16,
                       ),
                     ),
+                    SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            _notifyAboutEvent(context, _events[index]['name']!);
+                          },
+                          child: Text('Notify me'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            _registerForEvent(context, _events[index]['name']!);
+                          },
+                          child: Text('Register now'),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -71,6 +89,46 @@ class EventsPage extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+
+  void _notifyAboutEvent(BuildContext context, String eventName) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Notification'),
+          content: Text('You will be notified about $eventName.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _registerForEvent(BuildContext context, String eventName) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Register for $eventName'),
+          content: Text('Thank you for registering for $eventName.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
