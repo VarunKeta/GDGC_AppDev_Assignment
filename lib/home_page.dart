@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile_page.dart';
 import 'events_page.dart';
+import 'contactUs_page.dart'; // Import the Contact Us page
 
 class HomePage extends StatelessWidget {
   final List<Map<String, String>> cards = [
@@ -108,6 +109,22 @@ class HomePage extends StatelessWidget {
               ),
               Divider(),
               ListTile(
+                leading: Icon(Icons.contact_mail, color: Colors.black87),
+                title: Text(
+                  'Contact Us',
+                  style: TextStyle(color: Colors.black87),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ContactUsPage(),
+                    ),
+                  );
+                },
+              ),
+              Divider(),
+              ListTile(
                 leading: Icon(Icons.person, color: Colors.black87),
                 title: Text(
                   'Profile',
@@ -158,7 +175,6 @@ class HomePage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
                                   card['image']!,
-                                  height: 120,
                                   width: 120,
                                   fit: BoxFit.cover,
                                 ),

@@ -10,9 +10,6 @@ class GDGCApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GDGC',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: HomePage(),
     );
   }
